@@ -1,0 +1,42 @@
+<?xml version="1.0" standalone="no" ?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="4256px" height="4256px" xmlns="http://www.w3.org/2000/svg" version="1.1" id="SVG" >
+	<line x1="80" y1="4181" x2="80" y2="80" stroke-width="0.5" stroke="rgb(0,0,0)" />
+	<text x="1257.01" y="4186" fill="rgb(0,0,0)" stroke-width="0" stroke="transparent" font-size="12" font-family="Verdana" text-anchor="middle" dominant-baseline="central" transform="rotate(0,1257.01,4186)" >data3</text>
+	<text x="2434.02" y="4191" fill="rgb(0,0,0)" stroke-width="0" stroke="transparent" font-size="12" font-family="Verdana" text-anchor="middle" dominant-baseline="central" transform="rotate(0,2434.02,4191)" >0.5M</text>
+	<line x1="2434.02" y1="4181" x2="2434.02" y2="80" stroke-width="0.5" stroke="rgb(0,0,0)" />
+	<text x="2787.13" y="4186" fill="rgb(0,0,0)" stroke-width="0" stroke="transparent" font-size="12" font-family="Verdana" text-anchor="middle" dominant-baseline="central" transform="rotate(0,2787.13,4186)" >data4</text>
+	<text x="3140.23" y="4191" fill="rgb(0,0,0)" stroke-width="0" stroke="transparent" font-size="12" font-family="Verdana" text-anchor="middle" dominant-baseline="central" transform="rotate(0,3140.23,4191)" >0.65M</text>
+	<line x1="3140.23" y1="4181" x2="3140.23" y2="80" stroke-width="0.5" stroke="rgb(0,0,0)" />
+	<text x="3399.17" y="4186" fill="rgb(0,0,0)" stroke-width="0" stroke="transparent" font-size="12" font-family="Verdana" text-anchor="middle" dominant-baseline="central" transform="rotate(0,3399.17,4186)" >data2</text>
+	<text x="3658.11" y="4191" fill="rgb(0,0,0)" stroke-width="0" stroke="transparent" font-size="12" font-family="Verdana" text-anchor="middle" dominant-baseline="central" transform="rotate(0,3658.11,4191)" >0.76M</text>
+	<line x1="3658.11" y1="4181" x2="3658.11" y2="80" stroke-width="0.5" stroke="rgb(0,0,0)" />
+	<text x="3917.06" y="4186" fill="rgb(0,0,0)" stroke-width="0" stroke="transparent" font-size="12" font-family="Verdana" text-anchor="middle" dominant-baseline="central" transform="rotate(0,3917.06,4186)" >data1</text>
+	<text x="4176" y="4191" fill="rgb(0,0,0)" stroke-width="0" stroke="transparent" font-size="12" font-family="Verdana" text-anchor="middle" dominant-baseline="central" transform="rotate(0,4176,4191)" >0.87M</text>
+	<line x1="4176" y1="4181" x2="4176" y2="80" stroke-width="0.5" stroke="rgb(0,0,0)" />
+	<text x="4434.94" y="4186" fill="rgb(0,0,0)" stroke-width="0" stroke="transparent" font-size="12" font-family="Verdana" text-anchor="middle" dominant-baseline="central" transform="rotate(0,4434.94,4186)" >data1</text>
+	<text x="4693.89" y="4191" fill="rgb(0,0,0)" stroke-width="0" stroke="transparent" font-size="12" font-family="Verdana" text-anchor="middle" dominant-baseline="central" transform="rotate(0,4693.89,4191)" >0.98M</text>
+	<line x1="75" y1="4176" x2="4176" y2="4176" stroke-width="0.5" stroke="rgb(0,0,0)" />
+	<text x="70" y="2998.99" fill="rgb(0,0,0)" stroke-width="0" stroke="transparent" font-size="12" font-family="Verdana" text-anchor="middle" dominant-baseline="central" transform="rotate(-90,70,2998.99)" >data3</text>
+	<text x="40" y="1821.98" fill="rgb(0,0,0)" stroke-width="0" stroke="transparent" font-size="12" font-family="Verdana" text-anchor="middle" dominant-baseline="central" transform="rotate(0,40,1821.98)" >0.5M</text>
+	<line x1="75" y1="1821.98" x2="4176" y2="1821.98" stroke-width="0.5" stroke="rgb(0,0,0)" />
+	<text x="70" y="1468.87" fill="rgb(0,0,0)" stroke-width="0" stroke="transparent" font-size="12" font-family="Verdana" text-anchor="middle" dominant-baseline="central" transform="rotate(-90,70,1468.87)" >data4</text>
+	<text x="40" y="1115.77" fill="rgb(0,0,0)" stroke-width="0" stroke="transparent" font-size="12" font-family="Verdana" text-anchor="middle" dominant-baseline="central" transform="rotate(0,40,1115.77)" >0.65M</text>
+	<line x1="75" y1="1115.77" x2="4176" y2="1115.77" stroke-width="0.5" stroke="rgb(0,0,0)" />
+	<text x="70" y="856.828" fill="rgb(0,0,0)" stroke-width="0" stroke="transparent" font-size="12" font-family="Verdana" text-anchor="middle" dominant-baseline="central" transform="rotate(-90,70,856.828)" >data2</text>
+	<text x="40" y="597.885" fill="rgb(0,0,0)" stroke-width="0" stroke="transparent" font-size="12" font-family="Verdana" text-anchor="middle" dominant-baseline="central" transform="rotate(0,40,597.885)" >0.76M</text>
+	<line x1="75" y1="597.885" x2="4176" y2="597.885" stroke-width="0.5" stroke="rgb(0,0,0)" />
+	<text x="70" y="338.943" fill="rgb(0,0,0)" stroke-width="0" stroke="transparent" font-size="12" font-family="Verdana" text-anchor="middle" dominant-baseline="central" transform="rotate(-90,70,338.943)" >data1</text>
+	<text x="40" y="80" fill="rgb(0,0,0)" stroke-width="0" stroke="transparent" font-size="12" font-family="Verdana" text-anchor="middle" dominant-baseline="central" transform="rotate(0,40,80)" >0.87M</text>
+	<line x1="75" y1="80" x2="4176" y2="80" stroke-width="0.5" stroke="rgb(0,0,0)" />
+	<text x="70" y="-178.943" fill="rgb(0,0,0)" stroke-width="0" stroke="transparent" font-size="12" font-family="Verdana" text-anchor="middle" dominant-baseline="central" transform="rotate(-90,70,-178.943)" >data1</text>
+	<text x="40" y="-437.885" fill="rgb(0,0,0)" stroke-width="0" stroke="transparent" font-size="12" font-family="Verdana" text-anchor="middle" dominant-baseline="central" transform="rotate(0,40,-437.885)" >0.98M</text>
+	<text x="65" y="4191" fill="rgb(0,0,0)" stroke-width="0" stroke="transparent" font-size="12" font-family="Verdana" text-anchor="middle" dominant-baseline="central" transform="rotate(0,65,4191)" >0.00M</text>
+	<line x1="3658.11" y1="597.885" x2="4176" y2="80" stroke-width="3" stroke="rgb(255,0,0)" />
+	<line x1="3658.11" y1="1115.77" x2="4176" y2="597.885" stroke-width="3" stroke="rgb(255,0,0)" />
+	<line x1="3140.23" y1="1115.77" x2="3658.11" y2="597.885" stroke-width="3" stroke="rgb(255,0,0)" />
+	<line x1="80" y1="2292.78" x2="550.805" y2="1821.98" stroke-width="3" stroke="rgb(255,0,0)" />
+	<line x1="550.805" y1="3705.2" x2="1492.41" y2="2763.59" stroke-width="3" stroke="rgb(255,0,0)" />
+	<line x1="2434.02" y1="597.885" x2="2951.91" y2="80" stroke-width="3" stroke="rgb(255,0,0)" />
+	<line x1="2434.02" y1="1821.98" x2="3140.23" y2="1115.77" stroke-width="3" stroke="rgb(255,0,0)" />
+</svg>
