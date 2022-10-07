@@ -139,6 +139,8 @@ int parse_arguments(int argc, char* argv[], po::variables_map &vm) {
     return 1;
   }
 
+  std::cout << "q = " << vm["q"].as<int>()) << std::endl;
+
   return 0;
 }
 
