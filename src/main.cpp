@@ -99,34 +99,43 @@ int main(int argc, char* argv[]) {
 int parse_arguments(int argc, char* argv[], po::variables_map &vm) {
   // Declare the supported options.
   po::options_description desc("Allowed options");
-  desc.add_options()
-      ("help,h", "Prints help message")
-      ("paf,p", po::value<std::string>(), "Input file (.paf format)")
-      ("output,o", po::value<std::string>()->default_value("output"), "prefix of output")
-      ("qlen,q", po::value<int>()->default_value(100000), "Minimum query length")
-      ("tlen,t", po::value<int>()->default_value(100000), "Minimum target length")
-      ("alen,a", po::value<int>()->default_value(10000), "Minimum alignment length")
-      ("mapq,m", po::value<int>()->default_value(0), "Minimum mapping quality")
-      ("stroke,s", po::value<float>()->default_value(1.0), "Stroke width")
-      ("idy,i", po::value<float>()->default_value(0.31), "Minimum alignment identity")
-      ("xsize,x", po::value<int>()->default_value(4096), "x-size. Default")
-      ("ysize,y", po::value<int>()->default_value(4096), "y-size. Default")
-      ("fontsize,f", po::value<int>()->default_value(12), "font size")
-      ("offset", po::value<int>()->default_value(80), "offset of origin")
-  ;
+  try {
+    desc.add_options()
+        ("help,h", "Prints help message")
+        ("paf,p", po::value<std::string>(), "Input file (.paf format)")
+        ("output,o", po::value<std::string>()->default_value("output"), "prefix of output")
+        ("qlen,q", po::value<int>()->default_value(100000), "Minimum query length")
+        ("tlen,t", po::value<int>()->default_value(100000), "Minimum target length")
+        ("alen,a", po::value<int>()->default_value(10000), "Minimum alignment length")
+        ("mapq,m", po::value<int>()->default_value(0), "Minimum mapping quality")
+        ("stroke,s", po::value<float>()->default_value(1.0), "Stroke width")
+        ("idy,i", po::value<float>()->default_value(0.31), "Minimum alignment identity")
+        ("xsize,x", po::value<int>()->default_value(4096), "x-size. Default")
+        ("ysize,y", po::value<int>()->default_value(4096), "y-size. Default")
+        ("fontsize,f", po::value<int>()->default_value(12), "font size")
+        ("offset", po::value<int>()->default_value(80), "offset of origin")
+    ;
 
-  if (argc == 1) { // no argument in command line
-      std::cout << desc << std::endl;
-      return 1;
-  }
+    // no argument in command line
+    if (argc == 1) {
+        std::cout << desc << std::endl;
+        return 1;
+    }
 
-  //po::variables_map vm; // store command line
-  po::store(po::parse_command_line(argc, argv, desc), vm);
-  po::notify(vm);
+    // store command line
+    po::store(po::parse_command_line(argc, argv, desc), vm);
+    po::notify(vm);
 
-  if (vm.count("help")) {
-      std::cout << desc << std::endl;
-      return 1;
+    // if help
+    if (vm.count("help")) {
+        std::cout << desc << std::endl;
+        return 1;
+    }
+
+    // error catch
+  } catch ( const std::exception& e ) {
+    std::cerr << e.what() << std::endl;
+    return 1;
   }
 
   return 0;
