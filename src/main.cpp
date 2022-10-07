@@ -100,11 +100,11 @@ int parse_arguments(int argc, char* argv[], po::variables_map &vm) {
   // Declare the supported options.
   po::options_description desc("Allowed options");
   try {
-    std::string default_output = "output";
+    //std::string default_output = "output";
     desc.add_options()
         ("help,h", "Prints help message")
         ("paf,p", po::value<std::string>(), "Input file (.paf format)")
-        ("output,o", po::value<std::string>()->default_value(default_output)->required(), "prefix of output")
+        ("output,o", po::value<std::string>()->required(), "prefix of output")
         ("qlen,q", po::value<int>()->default_value(100000), "Minimum query length")
         ("tlen,t", po::value<int>()->default_value(100000), "Minimum target length")
         ("alen,a", po::value<int>()->default_value(10000), "Minimum alignment length")
