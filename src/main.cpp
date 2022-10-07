@@ -495,8 +495,17 @@ void draw_alignments(
 
     double xs = 0.0; double xe = 0.0;
     double ys = 0.0; double ye = 0.0;
+
+    bool sd = aln.get_sd();
     uint qs = aln.get_qs(); uint qe = aln.get_qe();
-    uint ts = aln.get_ts(); uint te = aln.get_te();
+    uint ts = 0; uint te = 0;
+
+    if (sd) {
+    	//uint ql = aln.get_ql(); uint tl = aln.get_tl();
+    	ts = aln.get_ts(); te = aln.get_te();
+    } else {
+    	ts = aln.get_te(); te = aln.get_ts();
+    }
 
     double identity = (double) aln.get_nm() / aln.get_bl();
 
@@ -514,13 +523,13 @@ void draw_alignments(
     Point end = Point(xe, ye);
 
     if (identity < 0.5) {
-      doc << Line (ori, end, Stroke(1, Color::Red));
+      doc << Line (ori, end, Stroke(sw, Color::Red));
     } else if (identity < 0.7) {
-      doc << Line (ori, end, Stroke(1, Color::Blue));
+      doc << Line (ori, end, Stroke(sw, Color::Blue));
     } else if (identity < 0.9) {
-      doc << Line (ori, end, Stroke(1, Color::Green));
+      doc << Line (ori, end, Stroke(sw, Color::Green));
     } else {
-      doc << Line (ori, end, Stroke(1, Color::Black));
+      doc << Line (ori, end, Stroke(sw, Color::Black));
     }
   }
 
