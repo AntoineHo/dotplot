@@ -103,7 +103,7 @@ int parse_arguments(int argc, char* argv[], po::variables_map &vm) {
     desc.add_options()
         ("help,h", "Prints help message")
         ("paf,p", po::value<std::string>(), "Input file (.paf format)")
-        ("output,o", po::value<std::string>()->default_value("output"), "prefix of output")
+        ("output,o", po::value<std::string>()->default_value("output")->implicit_value("./output"), "prefix of output")
         ("qlen,q", po::value<int>()->default_value(100000), "Minimum query length")
         ("tlen,t", po::value<int>()->default_value(100000), "Minimum target length")
         ("alen,a", po::value<int>()->default_value(10000), "Minimum alignment length")
