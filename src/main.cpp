@@ -100,19 +100,26 @@ int parse_arguments(int argc, char* argv[], po::variables_map &vm) {
   // Declare the supported options.
   po::options_description desc("Allowed options");
   desc.add_options()
-      ("help", "Prints help message")
-      ("paf", po::value<std::string>(), "Input file (.paf format)")
-      ("q", po::value<int>()->default_value(100000), "Minimum query length. Default: 100000")
-      ("t", po::value<int>()->default_value(100000), "Minimum target length. Default: 100000")
-      ("a", po::value<int>()->default_value(10000), "Minimum alignment length. Default: 10000")
-      ("m", po::value<int>()->default_value(0), "Minimum mapping quality. Default: 0")
-      ("s", po::value<float>()->default_value(1.0), "Stroke width. Default: 1.0")
-      ("i", po::value<float>()->default_value(0.3), "Minimum alignment identity. Default: 0.3")
-      ("x", po::value<int>()->default_value(4096), "x-size. Default: 4096px")
-      ("y", po::value<int>()->default_value(4096), "y-size. Default: 4096px")
-      ("off", po::value<int>()->default_value(80), "offset of origin. Default: 80px")
-      ("fs", po::value<int>()->default_value(12), "font size. Default: 12pt")
+      ("help,h", "Prints help message")
+      ("paf,p", po::value<std::string>(), "Input file (.paf format)")
+      ("qlen,q", po::value<int>()->default_value(100000), "Minimum query length. Default: 100000")
+      ("tlen,t", po::value<int>()->default_value(100000), "Minimum target length. Default: 100000")
+      ("alen,a", po::value<int>()->default_value(10000), "Minimum alignment length. Default: 10000")
+      ("mapq,m", po::value<int>()->default_value(0), "Minimum mapping quality. Default: 0")
+      ("stroke,s", po::value<float>()->default_value(1.0), "Stroke width. Default: 1.0")
+      ("idy,i", po::value<float>()->default_value(0.3), "Minimum alignment identity. Default: 0.3")
+      ("xsize,x", po::value<int>()->default_value(4096), "x-size. Default: 4096px")
+      ("ysize,y", po::value<int>()->default_value(4096), "y-size. Default: 4096px")
+      ("offset,of", po::value<int>()->default_value(80), "offset of origin. Default: 80px")
+      ("output,o", po::value<std::string>()->default_value("output"), "prefix of output. Default: 'output'")
+      ("fontsize,f", po::value<int>()->default_value(12), "font size. Default: 12pt")
   ;
+
+  if (argc == 1) { // no argument in command line
+      std::cout << desc << std::endl;
+      return 1;
+  }
+
   //po::variables_map vm; // store command line
   po::store(po::parse_command_line(argc, argv, desc), vm);
   po::notify(vm);
@@ -223,8 +230,8 @@ int make_svg(
 ){
 
   // Create output file
-  std::string filename = vm["paf"].as<std::string>();
-  std::string output = filename + ".dotplot.svg";
+  std::string filename = vm["p"].as<std::string>();
+  std::string output = vm["o"] + ".dotplot.svg";
   std::cout << "Output is: " << output << std::endl;
 
   /* previous way of doing it
@@ -256,7 +263,7 @@ int make_svg(
   double factor_x = x_size / x_dim; // fraction used to adjust x coordinates
   double factor_y = y_size / y_dim; // fraction used to adjust y coordinates
 
-  int offset = vm["off"].as<int>();
+  int offset = vm["of"].as<int>();
   x_size += 2*offset;
   y_size += 2*offset;
 
@@ -273,7 +280,7 @@ int make_svg(
   Document doc(output, Layout(dimensions, Layout::BottomLeft));
 
   // Create axis
-  int fontsize = vm["fs"].as<int>();
+  int fontsize = vm["f"].as<int>();
   std::map<stringpair,doublepair> coords = draw_axis(
     queries, targets, lengths, doc, factor_x, factor_y,
     x_dim, y_dim, x_size, y_size, offset, fontsize
@@ -322,29 +329,32 @@ std::map<stringpair,doublepair> draw_axis(
   //std::stringstream ss;
   double cumulative_x = 0.0 + offset;  // starts with a 20 offset (origin is at (20, 20))
 
+
+  // Iterate through queries x targets to pass through each pair once
   std::list<std::string>::iterator xit;
   std::list<std::string>::iterator yit;
 
   std::string query;
+  std::string target;
   for (xit = queries.begin(); xit != queries.end(); xit++) {
 
+    // Compute x position of the pair (0,0) anchor at south west
     query = *xit;
     uint x_length = lengths[query];
     double adjusted_x = factor_x * x_length;
-    double cumulative_y = 0.0 + offset;  // starts with a 20 offset (origin is at (20, 20))
     x_starts.push_back(cumulative_x);
     x_names.push_back(query);
 
-    std::string target;
+
+    double cumulative_y = 0.0 + offset;  // starts with a 20 offset (origin is at (20, 20))
     for (yit = targets.begin(); yit != targets.end(); yit++) {
 
-      // Get target
+      // Compute y position of the pair (0,0) anchor at south west
       target = *yit;
-      // get target length
       uint y_length = lengths[target];
-      // adjust target length
       double adjusted_y = factor_y * y_length;
 
+      // Get adjusted coordinates of origin for the pair query-target
       stringpair qry_tgt = {query, target};
       doublepair orig = {cumulative_x, cumulative_y};
       coords[qry_tgt] = orig;
@@ -354,19 +364,25 @@ std::map<stringpair,doublepair> draw_axis(
         y_names.push_back(target);
       }
 
+      // Increments y-axis origin of the pair at the end of previous contig
       cumulative_y += adjusted_y;
     }
 
+    // If we read the targets once already do not push this anymore
     if (first_read) {
       first_read = false;
-      y_starts.push_back(cumulative_y);
-      y_names.push_back(target);
+      // last pair // I think next two lines are an error
+      //y_starts.push_back(cumulative_y);
+      //y_names.push_back(target);
     }
 
+    // Increments x-axis origin of the pair at the end of previous contig
     cumulative_x += adjusted_x;
   }
-  x_starts.push_back(cumulative_x);
-  x_names.push_back(query);
+
+  // Last pair // I think next two lines are an error
+  //x_starts.push_back(cumulative_x);
+  //x_names.push_back(query);
 
   // draw axis lines & contig names
   std::vector<double>::iterator it;
