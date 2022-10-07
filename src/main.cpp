@@ -138,8 +138,9 @@ int parse_arguments(int argc, char* argv[], po::variables_map &vm) {
     return 1;
   }
 
-  std::cout << "Passed..." << std::endl;
-  std::cout << "qlen = " << vm["qlen"].as<int>() << std::endl;
+  // DEBUG
+  //std::cout << "Passed..." << std::endl;
+  //std::cout << "qlen = " << vm["qlen"].as<int>() << std::endl;
 
   return 0;
 }
@@ -218,11 +219,11 @@ int parse_paf(
 }
 
 bool check_alignment(int ql, int tl, int mq, int bl, float identity, po::variables_map &vm) {
-  if (ql < vm["q"].as<int>()) { return false; }
-  if (tl < vm["t"].as<int>()) { return false; }
-  if (mq < vm["m"].as<int>()) { return false; }
-  if (bl < vm["a"].as<int>()) { return false; }
-  if (identity < vm["i"].as<float>()) { return false; }
+  if (ql < vm["qlen"].as<int>()) { return false; }
+  if (tl < vm["tlen"].as<int>()) { return false; }
+  if (mq < vm["mapq"].as<int>()) { return false; }
+  if (bl < vm["alen"].as<int>()) { return false; }
+  if (identity < vm["idy"].as<float>()) { return false; }
   return true;
 }
 
@@ -244,7 +245,7 @@ int make_svg(
   // Create output file
   //std::string filename = vm["p"].as<std::string>();
   //std::string ext = ".dotplot.svg";
-  std::string output = vm["o"].as<std::string>() + ".dotplot.svg";
+  std::string output = vm["output"].as<std::string>() + ".dotplot.svg";
   std::cout << "Output is: " << output << std::endl;
 
   /* previous way of doing it
@@ -254,8 +255,8 @@ int make_svg(
   int reduction_factor = vm["r"].as<int>();
   */
 
-  double x_size = (double) vm["x"].as<int>(); // + offset;
-  double y_size = (double) vm["y"].as<int>(); // + offset;
+  double x_size = (double) vm["xsize"].as<int>(); // + offset;
+  double y_size = (double) vm["ysize"].as<int>(); // + offset;
 
   uint x_dim = 0;
   uint y_dim = 0;
@@ -276,7 +277,7 @@ int make_svg(
   double factor_x = x_size / x_dim; // fraction used to adjust x coordinates
   double factor_y = y_size / y_dim; // fraction used to adjust y coordinates
 
-  int offset = vm["of"].as<int>();
+  int offset = vm["offset"].as<int>();
   x_size += 2*offset;
   y_size += 2*offset;
 
@@ -293,14 +294,14 @@ int make_svg(
   Document doc(output, Layout(dimensions, Layout::BottomLeft));
 
   // Create axis
-  int fontsize = vm["f"].as<int>();
+  int fontsize = vm["fontsize"].as<int>();
   std::map<stringpair,doublepair> coords = draw_axis(
     queries, targets, lengths, doc, factor_x, factor_y,
     x_dim, y_dim, x_size, y_size, offset, fontsize
   );
 
   // Draw alignments
-  float sw = vm["s"].as<float>();
+  float sw = vm["stroke"].as<float>();
   draw_alignments(alignments, lengths, coords, doc, factor_x, factor_y, sw);
 
 
