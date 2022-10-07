@@ -498,7 +498,7 @@ std::map<stringpair,doublepair> draw_axis(
 
   // Add a 0.0 tick name
   Text origin_text(
-    Point(offset - 15.0, offset - 15.0), "0.00M", Fill(Color::Black), Font((double)fontsize),
+    Point(offset - 15.0, offset - 15.0), "0", Fill(Color::Black), Font((double)fontsize),
     0.0, offset - 15.0, offset - 15.0, Stroke(0.0)
   );  // 90.0 is rotation, 10.0 is x coord and center_y_text is y coord for center of text
   doc << origin_text;
