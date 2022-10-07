@@ -103,7 +103,7 @@ int parse_arguments(int argc, char* argv[], po::variables_map &vm) {
     std::string default_output = "output";
     desc.add_options()
         ("help,h", "Prints help message")
-        ("paf,p", po::value<std::string>()->required(), "Input file (.paf format)")
+        ("paf,p", po::value<std::string>(), "Input file (.paf format)")
         ("output,o", po::value<std::string>()->default_value(default_output), "prefix of output")
         ("qlen,q", po::value<int>()->default_value(100000), "Minimum query length")
         ("tlen,t", po::value<int>()->default_value(100000), "Minimum target length")
