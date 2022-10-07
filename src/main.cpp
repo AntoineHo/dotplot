@@ -231,8 +231,8 @@ int make_svg(
 
   // Create output file
   //std::string filename = vm["p"].as<std::string>();
-  std::string ext = ".dotplot.svg";
-  std::string output = vm["o"] + ext;
+  //std::string ext = ".dotplot.svg";
+  std::string output = vm["o"].as<std::string>() + ".dotplot.svg";
   std::cout << "Output is: " << output << std::endl;
 
   /* previous way of doing it
