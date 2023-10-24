@@ -27,3 +27,9 @@ Allowed options:
   --off arg (=80)        offset of origin. Default: 80px
   --fs arg (=12)         font size. Default: 12pt
 ```
+
+Alignment colors:
+- Black: identity $\geq .9$
+- Green: identity $\geq .7$
+- Blue: identity $\geq .5$
+- Red: identity $< .5$
